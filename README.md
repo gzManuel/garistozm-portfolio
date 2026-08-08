@@ -32,6 +32,7 @@ npm run dev          # http://localhost:3000
 | ----------------------- | ------------------------------------------ |
 | `npm run dev`           | Dev server                                 |
 | `npm run build`         | Static export into `out/`                  |
+| `npm run preview`       | Serve the built `out/` locally             |
 | `npm run typecheck`     | `tsc --noEmit`                             |
 | `npm run lint`          | ESLint (type-aware)                        |
 | `npm run format`        | Prettier, including Tailwind class sorting |
@@ -39,8 +40,23 @@ npm run dev          # http://localhost:3000
 | `npm run test:watch`    | Vitest, watch mode                         |
 | `npm run test:coverage` | Vitest with the 80% threshold enforced     |
 
+There is no `npm start` — `next start` is incompatible with `output: 'export'`. Use
+`npm run preview` to serve the real build.
+
 Git hooks (Husky): `pre-commit` runs lint-staged; `pre-push` runs typecheck and the
-test suite.
+test suite. Those are local and bypassable, so CI is the real gate:
+`.github/workflows/ci.yml` runs typecheck, lint, format, tests and build on every
+push and PR to `main`.
+
+## Social card
+
+`src/app/og.png/route.tsx` generates the 1200×630 share image at build time from
+`src/content/site.ts`, so it stays in sync with your name and role automatically.
+
+It's a Route Handler rather than Next's `opengraph-image.tsx` convention on purpose:
+that convention emits an _extensionless_ asset, which a static host serves with no
+`Content-Type` header — crawlers reject it and the card silently renders blank. A path
+ending in `.png` gets the right content type everywhere.
 
 ## Editing content
 

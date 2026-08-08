@@ -17,6 +17,9 @@ const azeretMono = Azeret_Mono({
   display: 'swap',
 });
 
+// Generated at build time by `app/og.png/route.tsx`.
+const ogAlt = `${site.name} — ${site.role}`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: `${site.name} — ${site.role}`,
@@ -31,11 +34,13 @@ export const metadata: Metadata = {
     description: site.description,
     siteName: site.name,
     locale: 'en_US',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: ogAlt }],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${site.name} — ${site.role}`,
     description: site.description,
+    images: [{ url: '/og.png', alt: ogAlt }],
   },
 };
 

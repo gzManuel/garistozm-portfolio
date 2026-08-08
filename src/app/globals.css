@@ -66,17 +66,22 @@ body {
   color: var(--accent-ink);
 }
 
+/*
+ * No `border-radius` here: that would set the *element's* radius, not the
+ * outline's, squaring off every pill button the moment it takes focus. The
+ * outline already follows whatever radius the element itself has.
+ */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 2px;
 }
 
 /*
  * Theme toggle label. Driven by the `data-theme` attribute rather than React
  * state, so the button needs no hydration and cannot mismatch the pre-paint
- * inline script. `display: none` also keeps the hidden label out of the
- * button's accessible name.
+ * inline script. `display: none` also keeps the inactive label out of the
+ * button's accessible name — which is how each label can carry its own
+ * screen-reader phrasing describing the *action*, not the current state.
  */
 [data-theme-label] {
   display: none;

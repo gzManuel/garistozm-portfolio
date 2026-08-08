@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# A newer push to the same branch supersedes an in-flight run.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      # Each step runs even if an earlier one failed, so a single push reports
+      # every problem at once instead of one per round trip.
+      - name: Typecheck
+        if: '!cancelled()'
+        run: npm run typecheck
+
+      - name: Lint
+        if: '!cancelled()'
+        run: npm run lint -- --max-warnings=0
+
+      - name: Format
+        if: '!cancelled()'
+        run: npm run format:check
+
+      - name: Test
+        if: '!cancelled()'
+        run: npm run test:coverage
+
+      - name: Build
+        if: '!cancelled()'
+        run: npm run build
+
+      - name: Check the social card was generated
+        if: '!cancelled()'
+        run: test -f out/og.png

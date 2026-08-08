@@ -4,7 +4,7 @@ import { Section } from './Section';
 
 export function Signals() {
   return (
-    <Section label="05 — Signals" raised>
+    <Section index="05" heading="Signals" raised>
       <Reveal as="blockquote" className="border-l-2 border-accent pl-[22px]">
         <p className="text-[19px] leading-[1.55] tracking-[-0.015em] lg:text-[25px]">
           &ldquo;{signals.testimonial.quote}&rdquo;

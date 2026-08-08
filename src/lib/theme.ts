@@ -21,7 +21,9 @@ export function storedTheme(): Theme | null {
 }
 
 export function systemTheme(): Theme {
-  if (typeof window.matchMedia !== 'function') return 'dark';
+  // `typeof window` first: reaching straight for `window.matchMedia` throws a
+  // ReferenceError during server rendering rather than falling through.
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return 'dark';
   return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 }
 

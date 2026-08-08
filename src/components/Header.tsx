@@ -11,7 +11,9 @@ export function Header() {
           <span className="text-fg2">.dev</span>
         </a>
 
-        <nav aria-label="Primary" className="hidden items-center gap-7 text-sm text-fg2 md:flex">
+        {/* `lg` matches every layout token in the site; switching the nav at
+            `md` left 768–1024px with a desktop nav in mobile gutters. */}
+        <nav aria-label="Primary" className="hidden items-center gap-7 text-sm text-fg2 lg:flex">
           {site.nav.map((item) => (
             <a key={item.href} href={item.href} className="transition-colors hover:text-fg">
               {item.label}

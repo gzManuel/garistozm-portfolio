@@ -4,7 +4,7 @@ import { Section } from './Section';
 
 export function Skills() {
   return (
-    <Section id="skills" label="02 — Stack">
+    <Section id="skills" index="02" heading="Stack">
       <Reveal
         as="p"
         className="mb-[34px] max-w-[620px] text-base leading-[1.7] text-fg2 lg:text-[19px]"

@@ -1,6 +1,10 @@
 import { hero } from '@/content/hero';
 import { site } from '@/content/site';
+import { ExternalLink } from './ExternalLink';
 import { Reveal } from './Reveal';
+
+const heroPill =
+  'rounded-full border border-line px-[22px] py-3.5 text-[15px] whitespace-nowrap transition-colors hover:border-accent hover:text-accent';
 
 export function Hero() {
   return (
@@ -35,22 +39,12 @@ export function Hero() {
             >
               {hero.primaryCta.label}
             </a>
-            <a
-              href={site.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-line px-[22px] py-3.5 text-[15px] whitespace-nowrap transition-colors hover:border-accent hover:text-accent"
-            >
+            <ExternalLink href={site.github} className={heroPill}>
               GitHub
-            </a>
-            <a
-              href={site.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-line px-[22px] py-3.5 text-[15px] whitespace-nowrap transition-colors hover:border-accent hover:text-accent"
-            >
+            </ExternalLink>
+            <ExternalLink href={site.linkedin} className={heroPill}>
               LinkedIn
-            </a>
+            </ExternalLink>
           </Reveal>
         </div>
 

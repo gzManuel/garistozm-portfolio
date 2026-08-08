@@ -4,7 +4,7 @@ import { Section } from './Section';
 
 export function Timeline() {
   return (
-    <Section id="path" label="04 — Path">
+    <Section id="path" index="04" heading="Path">
       {timeline.entries.map((entry) => (
         <Reveal
           key={`${entry.when}-${entry.role}`}

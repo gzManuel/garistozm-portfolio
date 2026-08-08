@@ -2,10 +2,17 @@ import type { ReactNode } from 'react';
 import type { SectionId } from '@/content/site';
 import { Reveal } from './Reveal';
 
+/** Shared so `Section` and the hand-rolled sections derive the same id. */
+export function sectionLabelId(key: string): string {
+  return `${key.replace(/\W+/g, '-').toLowerCase()}-label`;
+}
+
 interface SectionProps {
   id?: SectionId;
-  /** The mono eyebrow heading, e.g. "01 — About". */
-  label: string;
+  /** The decorative counter shown before the heading, e.g. "01". */
+  index: string;
+  /** The real heading text — what search engines and screen readers get. */
+  heading: string;
   children: ReactNode;
   /** Uses the raised `bg2` background, as the mock does for Projects and Signals. */
   raised?: boolean;
@@ -16,11 +23,19 @@ interface SectionProps {
  * The mock's repeated section chrome: a narrow mono label column beside the
  * content, collapsing to a single column below `lg`.
  *
- * The label doubles as the section's accessible name, so each one shows up as a
- * navigable region landmark rather than an anonymous block.
+ * The counter is decorative and hidden from assistive tech, so the `<h2>` reads
+ * as "About" rather than "01 — About" while looking identical on screen. That
+ * heading also names the section as a region landmark.
  */
-export function Section({ id, label, children, raised = false, className = '' }: SectionProps) {
-  const labelId = `${id ?? label.replace(/\W+/g, '-').toLowerCase()}-label`;
+export function Section({
+  id,
+  index,
+  heading,
+  children,
+  raised = false,
+  className = '',
+}: SectionProps) {
+  const labelId = sectionLabelId(id ?? heading);
 
   return (
     <section
@@ -36,7 +51,8 @@ export function Section({ id, label, children, raised = false, className = '' }:
           id={labelId}
           className="font-mono text-xs font-medium tracking-[0.14em] text-fg2 uppercase"
         >
-          {label}
+          <span aria-hidden="true">{index} — </span>
+          {heading}
         </Reveal>
         <div>{children}</div>
       </div>

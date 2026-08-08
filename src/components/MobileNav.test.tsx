@@ -15,6 +15,18 @@ describe('MobileNav', () => {
     expect(panel()).not.toBeInTheDocument();
   });
 
+  // The panel stays mounted (just `hidden`) so aria-controls always resolves to
+  // a real element rather than dangling while closed.
+  it('keeps the panel in the DOM so aria-controls resolves', () => {
+    render(<MobileNav />);
+
+    // `hidden: true` opts into querying elements excluded from the a11y tree —
+    // exactly what we want to assert here: the target exists while closed.
+    const target = screen.getByRole('navigation', { name: 'Mobile', hidden: true });
+
+    expect(trigger()).toHaveAttribute('aria-controls', target.id);
+  });
+
   it('opens on click and moves focus into the panel', async () => {
     const user = userEvent.setup();
     render(<MobileNav />);
@@ -69,20 +81,47 @@ describe('MobileNav', () => {
     expect(panel()).not.toBeInTheDocument();
   });
 
-  it('traps Tab inside the panel', async () => {
+  it('closes when a press lands outside the menu', async () => {
+    const user = userEvent.setup();
+    render(
+      <>
+        <MobileNav />
+        <button type="button">elsewhere</button>
+      </>,
+    );
+    await user.click(screen.getByRole('button', { name: 'Open menu' }));
+    expect(panel()).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: 'elsewhere' }));
+
+    expect(panel()).not.toBeInTheDocument();
+  });
+
+  it('stays open when a press lands inside the menu', async () => {
     const user = userEvent.setup();
     render(<MobileNav />);
     await user.click(trigger());
 
-    const links = screen.getAllByRole('link');
-    const first = links[0]!;
-    const last = links[links.length - 1]!;
+    await user.click(screen.getByRole('navigation', { name: 'Mobile' }));
 
-    last.focus();
+    expect(panel()).toBeInTheDocument();
+  });
+
+  // Regression: this is a non-modal disclosure, not a dialog. Trapping focus
+  // here would strand keyboard users in a menu they can see past.
+  it('does not trap focus inside the panel', async () => {
+    const user = userEvent.setup();
+    render(
+      <>
+        <MobileNav />
+        <a href="#after">after</a>
+      </>,
+    );
+    await user.click(trigger());
+
+    screen.getByRole('link', { name: 'Contact' }).focus();
     await user.tab();
-    expect(first).toHaveFocus();
 
-    await user.tab({ shift: true });
-    expect(last).toHaveFocus();
+    expect(screen.getByRole('link', { name: 'after' })).toHaveFocus();
   });
 });

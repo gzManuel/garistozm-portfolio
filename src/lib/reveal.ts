@@ -96,7 +96,11 @@ export function observeReveal(el: Element): () => void {
   };
 }
 
-/** Test hook — drops the module-level observer so each test starts clean. */
+/**
+ * Deliberate test seam — not used by the app. The observer and pending set are
+ * module-level singletons, so tests need a way to reset them between cases.
+ * Tree-shaken out of the production bundle since nothing in `src/app` imports it.
+ */
 export function resetRevealObserver(): void {
   observer?.disconnect();
   observer = null;

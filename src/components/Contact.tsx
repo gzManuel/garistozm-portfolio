@@ -1,13 +1,18 @@
 import { site } from '@/content/site';
+import { ExternalLink } from './ExternalLink';
 import { Reveal } from './Reveal';
+import { sectionLabelId } from './Section';
 
 const isPlaceholderEmail = site.email.endsWith('@example.com');
+
+const outboundPill =
+  'rounded-full border border-line px-[22px] py-3 text-[15px] whitespace-nowrap transition-colors hover:border-accent hover:text-accent';
 
 export function Contact() {
   return (
     <section
       id="contact"
-      aria-labelledby="contact-label"
+      aria-labelledby={sectionLabelId('contact')}
       className="scroll-mt-20 px-[22px] py-[76px] lg:px-16 lg:py-32"
     >
       <div className="mx-auto max-w-[1080px]">
@@ -17,7 +22,7 @@ export function Contact() {
 
         <Reveal
           as="h2"
-          id="contact-label"
+          id={sectionLabelId('contact')}
           className="max-w-[700px] text-[34px] leading-[1.05] font-extrabold tracking-[-0.03em] lg:text-[56px]"
         >
           Got something worth building<span className="text-accent">?</span>
@@ -39,28 +44,15 @@ export function Contact() {
         )}
 
         <Reveal className="mt-[34px] flex flex-wrap gap-3">
-          <a
-            href={site.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-line px-[22px] py-3 text-[15px] whitespace-nowrap transition-colors hover:border-accent hover:text-accent"
-          >
-            GitHub ↗
-          </a>
-          <a
-            href={site.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-line px-[22px] py-3 text-[15px] whitespace-nowrap transition-colors hover:border-accent hover:text-accent"
-          >
-            LinkedIn ↗
-          </a>
-          <a
-            href={site.resume}
-            className="rounded-full border border-line px-[22px] py-3 text-[15px] whitespace-nowrap transition-colors hover:border-accent hover:text-accent"
-          >
-            Résumé ↗
-          </a>
+          <ExternalLink href={site.github} arrow className={outboundPill}>
+            GitHub
+          </ExternalLink>
+          <ExternalLink href={site.linkedin} arrow className={outboundPill}>
+            LinkedIn
+          </ExternalLink>
+          <ExternalLink href={site.resume} arrow className={outboundPill}>
+            Résumé
+          </ExternalLink>
         </Reveal>
       </div>
     </section>

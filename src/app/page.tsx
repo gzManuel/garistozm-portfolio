@@ -12,7 +12,12 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main id="top">
+      {/*
+        tabIndex={-1} makes the skip-link target focusable, so activating the
+        link moves focus here rather than only scrolling — otherwise the next
+        Tab sends the user straight back into the header.
+      */}
+      <main id="top" tabIndex={-1} className="outline-none">
         <Hero />
         <About />
         <Skills />

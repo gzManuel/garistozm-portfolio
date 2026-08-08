@@ -6,7 +6,7 @@ export function About() {
   const [lead, follow] = about.paragraphs;
 
   return (
-    <Section id="about" label="01 — About">
+    <Section id="about" index="01" heading="About">
       <Reveal as="p" className="text-base leading-[1.7] text-fg lg:text-[19px]">
         {lead}
       </Reveal>

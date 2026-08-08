@@ -76,11 +76,23 @@ describe('ThemeToggle', () => {
     expect(document.documentElement).toHaveAttribute('data-theme', 'light');
   });
 
-  it('renders both labels for the stylesheet to switch between', () => {
+  // Both labels ship; the stylesheet shows one and `display: none` keeps the
+  // other out of the accessible name.
+  it('renders both visible labels for the stylesheet to switch between', () => {
     stubPrefersLight(false);
     render(<ThemeToggle />);
 
-    expect(screen.getByText('Dark')).toHaveAttribute('data-theme-label', 'dark');
-    expect(screen.getByText('Light')).toHaveAttribute('data-theme-label', 'light');
+    expect(screen.getByText('Dark')).toBeInTheDocument();
+    expect(screen.getByText('Light')).toBeInTheDocument();
+  });
+
+  // The visible word states the current theme; the screen-reader text has to
+  // state what pressing the button will *do*, or it's ambiguous.
+  it('pairs each label with the action it performs, not the current value', () => {
+    stubPrefersLight(false);
+    render(<ThemeToggle />);
+
+    expect(screen.getByText('Switch to light theme')).toBeInTheDocument();
+    expect(screen.getByText('Switch to dark theme')).toBeInTheDocument();
   });
 });

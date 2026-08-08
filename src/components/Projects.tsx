@@ -1,5 +1,7 @@
 import { projects } from '@/content/projects';
+import { ExternalLink } from './ExternalLink';
 import { Reveal } from './Reveal';
+import { sectionLabelId } from './Section';
 
 const { featured, ghosts } = projects;
 
@@ -7,14 +9,14 @@ export function Projects() {
   return (
     <section
       id="projects"
-      aria-labelledby="projects-label"
+      aria-labelledby={sectionLabelId('projects')}
       className="scroll-mt-20 border-b border-line bg-bg2 px-[22px] py-16 lg:px-16 lg:py-[104px]"
     >
       <div className="mx-auto max-w-[1080px]">
         <div className="mb-10 flex flex-wrap items-baseline justify-between gap-5">
           <Reveal
             as="h2"
-            id="projects-label"
+            id={sectionLabelId('projects')}
             className="text-3xl font-extrabold tracking-[-0.025em] lg:text-[42px]"
           >
             {projects.heading}
@@ -55,18 +57,20 @@ export function Projects() {
               </ul>
 
               <div className="mt-[30px] flex flex-wrap gap-2.5">
-                <a
+                <ExternalLink
                   href={featured.liveUrl}
+                  arrow
                   className="rounded-full bg-accent px-5 py-[11px] text-sm font-semibold whitespace-nowrap text-accent-ink hover:opacity-90"
                 >
-                  Live site ↗
-                </a>
-                <a
+                  Live site
+                </ExternalLink>
+                <ExternalLink
                   href={featured.repoUrl}
+                  arrow
                   className="rounded-full border border-line px-5 py-[11px] text-sm whitespace-nowrap transition-colors hover:border-accent hover:text-accent"
                 >
-                  Repository ↗
-                </a>
+                  Repository
+                </ExternalLink>
               </div>
             </div>
 
