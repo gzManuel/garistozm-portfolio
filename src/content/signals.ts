@@ -9,31 +9,47 @@ export interface Testimonial {
 }
 
 export interface SignalsContent {
-  readonly testimonial: Testimonial;
+  readonly testimonials: readonly Testimonial[];
   readonly achievements: readonly Achievement[];
 }
 
-// TODO(manuel): the quote and its attribution are placeholders — get a real one
-// from a colleague or lead, or delete the Signals section from `app/page.tsx`.
 export const signals = {
-  testimonial: {
-    quote:
-      'Manuel took the migration nobody wanted to touch and turned it into the cleanest repo on the team.',
-    attribution: '[ placeholder quote — colleague name, role ]',
-  },
+  testimonials: [
+    {
+      quote:
+        '…diving head-first into the Lambda project and taking full ownership of it. I’m continuously impressed with your ability to take some high-level requirements and turn them into a highly functional product.',
+      attribution: 'Ben March · Harvard Business Publishing',
+    },
+    {
+      quote:
+        'Manuel is a delight to work with. Ever eager to help out and learn new skills, he goes above and beyond to try to come up with suggestions on what more he can do from the task assigned. He’s great with Next.js, TypeScript and unit testing, and picked up things like Cypress needed for our project in a short span.',
+      attribution: 'Bhuvanasri Kalyana Sundaram · Senior Engineer, Aerospike',
+    },
+  ],
   achievements: [
     {
-      kind: 'Migrations',
-      text: 'Three legacy repositories moved to Next.js with AI-assisted refactors, no feature freeze.',
+      kind: 'Performance',
+      text: 'Brilliant Earth PDP/PLP from 62 to 92 on Lighthouse — LCP 4.2s → 2.0s after a BFF layer cut API calls per page from 7 to 2.',
+    },
+    {
+      kind: 'Automation',
+      text: 'AWS Lambda and Jenkins took a Harvard Quick Cases batch job from 24 hours to 1.5 minutes, and converted 120,000+ XML documents to HTML.',
     },
     {
       kind: 'Accessibility',
-      text: 'ADA remediation across a component library used by multiple client sites.',
+      text: 'ADA / WCAG 2.1 remediation across 160+ components on client e-commerce and ed-tech sites, verified with Axe, SortSite and manual AT passes.',
+    },
+    {
+      kind: 'Leadership',
+      text: 'Led Nexus, an internal engineering guild of three developers, and gave the talk "Compound Design Patterns & Next.js SSR vs CSR".',
+    },
+    {
+      kind: 'AI-assisted delivery',
+      text: 'Picked by Harvard to pilot an internal AI development tool on a production course migration — shipped in under two months, held to their coding standards.',
     },
     {
       kind: 'Certification',
-      // TODO(manuel): name the actual certification.
-      text: '[ placeholder — AWS / accessibility cert goes here ]',
+      text: 'Node.js (Intermediate), HackerRank — 2025.',
     },
   ],
 } as const satisfies SignalsContent;

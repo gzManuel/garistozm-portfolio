@@ -29,7 +29,7 @@ export interface SiteContent {
 
 export const site = {
   name: 'Manuel Garisto',
-  role: 'Full-stack web developer',
+  role: 'Senior Frontend Engineer',
   location: 'Buenos Aires, Argentina',
   timezone: 'GMT-3',
 
@@ -38,16 +38,14 @@ export const site = {
   url: 'https://garistozm.vercel.app',
 
   description:
-    'Full-stack web developer in Buenos Aires. Six years shipping production React and Next.js for U.S. teams — migrations, CI/CD, and accessible components that hold up after handoff.',
+    'Senior frontend engineer in Buenos Aires. Six years shipping production React and Next.js for U.S. teams — ADA-compliant e-commerce and ed-tech, legacy migrations, CI/CD, and components that hold up after handoff.',
 
-  // TODO(manuel): replace with your real address — this is the mock placeholder.
-  email: 'hello@example.com',
+  email: 'garistozm@outlook.com',
 
-  // TODO(manuel): point these at your actual profiles.
-  github: 'https://github.com',
-  linkedin: 'https://linkedin.com',
+  github: 'https://github.com/gzManuel',
+  linkedin: 'https://www.linkedin.com/in/garistozunamanuel',
 
-  // TODO(manuel): drop a PDF in /public and link it here (e.g. '/manuel-garisto-cv.pdf').
+  // TODO(manuel): drop the CV PDF in /public and link it here (e.g. '/manuel-garisto-cv.pdf').
   resume: '#',
 
   nav: [
@@ -57,5 +55,5 @@ export const site = {
     { label: 'Path', href: '#path' },
   ],
 
-  footerNote: 'Buenos Aires · GMT-3',
+  footerNote: 'Buenos Aires · GMT-3 · U.S. hours overlap',
 } as const satisfies SiteContent;

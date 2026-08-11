@@ -11,12 +11,13 @@ export interface AboutContent {
 
 export const about = {
   paragraphs: [
-    'Passionate and versatile software engineer with 6+ years of experience, delivering high-quality solutions across U.S.-based teams. Recent highlights include leading migration projects like Storefront, Quick Cases and legacy repositories with AI, using Next.js, React, AWS S3 and Lambda, establishing CI/CD workflows with Jenkins, AWS Amplify and blue/green deployments, and presenting demos to clients.',
-    "I also build components for Builder and Contentful, enhancing ADA accessibility and optimizing performance. I'm eager to bring my expertise to transformative, challenging projects, with clean and maintainable code.",
+    'Senior frontend engineer with 6+ years building ADA-compliant e-commerce and ed-tech platforms for U.S. client teams, backed by production Node.js and Python/Flask experience. I raised Brilliant Earth PDP/PLP Lighthouse scores from 62 to 92, and cut a Harvard Business School batch job from 24 hours to 1.5 minutes with AWS Lambda and Jenkins.',
+    'I own frontend architecture, testing strategy, CI/CD pipelines and AI-assisted legacy migrations end to end — Next.js and Turborepo monorepos, Contentful and Builder.io components, WCAG 2.1 remediation. I lead code and architecture reviews, mentor developers, and give the occasional technical talk.',
   ],
   chips: [
     { label: 'Open to full-time', highlight: true },
     { label: 'Contract work', highlight: false },
+    { label: 'Remote · U.S. hours', highlight: false },
     { label: 'English · Spanish', highlight: false },
   ],
 } as const satisfies AboutContent;

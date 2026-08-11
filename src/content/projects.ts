@@ -1,3 +1,9 @@
+/** A screenshot served from /public, rendered edge-to-edge in its card cell. */
+export interface Screenshot {
+  readonly src: string;
+  readonly alt: string;
+}
+
 export interface Project {
   readonly name: string;
   readonly status: string;
@@ -5,8 +11,7 @@ export interface Project {
   readonly stack: readonly string[];
   readonly liveUrl: string;
   readonly repoUrl: string;
-  /** Alt text for the screenshot slot; also the caption while it's a placeholder. */
-  readonly shotLabel: string;
+  readonly shot: Screenshot;
 }
 
 export interface GhostSlot {
@@ -33,8 +38,10 @@ export const projects = {
     liveUrl: '#',
     repoUrl: '#',
 
-    // TODO(manuel): drop a screenshot in /public and render it instead of this slot.
-    shotLabel: 'pp-track screenshot / demo gif',
+    shot: {
+      src: '/pp-track.png',
+      alt: 'pp-track overview screen: an allocation donut chart, a cost and gain/loss bar chart, and a table of positions.',
+    },
   },
   ghosts: [
     {

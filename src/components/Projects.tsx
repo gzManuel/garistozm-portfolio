@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { projects } from '@/content/projects';
 import { ExternalLink } from './ExternalLink';
 import { Reveal } from './Reveal';
@@ -74,11 +75,15 @@ export function Projects() {
               </div>
             </div>
 
-            {/* Screenshot slot. The diagonal hatch is the mock's placeholder fill. */}
-            <div className="flex min-h-[200px] items-center justify-center border-t border-line bg-[repeating-linear-gradient(135deg,var(--bg3)_0_9px,var(--bg2)_9px_18px)] p-5 lg:min-h-[320px] lg:border-t-0 lg:border-l">
-              <span className="rounded-lg border border-line bg-bg px-4 py-2.5 text-center font-mono text-[11px] tracking-[0.1em] text-fg2 uppercase">
-                {featured.shotLabel}
-              </span>
+            {/* Screenshot slot. The shot covers the whole cell; the hatch is the loading fill. */}
+            <div className="relative min-h-[220px] border-t border-line bg-[repeating-linear-gradient(135deg,var(--bg3)_0_9px,var(--bg2)_9px_18px)] lg:min-h-[320px] lg:border-t-0 lg:border-l">
+              <Image
+                src={featured.shot.src}
+                alt={featured.shot.alt}
+                fill
+                sizes="(min-width: 1024px) 520px, 100vw"
+                className="object-cover object-left-top"
+              />
             </div>
           </div>
         </Reveal>
