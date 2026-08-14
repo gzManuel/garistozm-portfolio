@@ -1,10 +1,11 @@
 import Image from 'next/image';
-import { projects } from '@/content/projects';
+import { projects, type ProjectsContent } from '@/content/projects';
 import { ExternalLink } from './ExternalLink';
 import { Reveal } from './Reveal';
 import { sectionLabelId } from './Section';
 
-const { featured, ghosts } = projects;
+// Widened from the `as const` literal so optional fields like liveUrl stay readable here.
+const { featured }: ProjectsContent = projects;
 
 export function Projects() {
   return (
@@ -57,18 +58,26 @@ export function Projects() {
                 ))}
               </ul>
 
+              {/* Without a deployment the repo is the primary call to action, so it takes
+                  the filled button and "Live site" drops out rather than linking nowhere. */}
               <div className="mt-[30px] flex flex-wrap gap-2.5">
-                <ExternalLink
-                  href={featured.liveUrl}
-                  arrow
-                  className="rounded-full bg-accent px-5 py-[11px] text-sm font-semibold whitespace-nowrap text-accent-ink hover:opacity-90"
-                >
-                  Live site
-                </ExternalLink>
+                {featured.liveUrl && (
+                  <ExternalLink
+                    href={featured.liveUrl}
+                    arrow
+                    className="rounded-full bg-accent px-5 py-[11px] text-sm font-semibold whitespace-nowrap text-accent-ink hover:opacity-90"
+                  >
+                    Live site
+                  </ExternalLink>
+                )}
                 <ExternalLink
                   href={featured.repoUrl}
                   arrow
-                  className="rounded-full border border-line px-5 py-[11px] text-sm whitespace-nowrap transition-colors hover:border-accent hover:text-accent"
+                  className={
+                    featured.liveUrl
+                      ? 'rounded-full border border-line px-5 py-[11px] text-sm whitespace-nowrap transition-colors hover:border-accent hover:text-accent'
+                      : 'rounded-full bg-accent px-5 py-[11px] text-sm font-semibold whitespace-nowrap text-accent-ink hover:opacity-90'
+                  }
                 >
                   Repository
                 </ExternalLink>
@@ -86,18 +95,6 @@ export function Projects() {
               />
             </div>
           </div>
-        </Reveal>
-
-        <Reveal className="mt-4 grid gap-4 lg:grid-cols-2">
-          {ghosts.map((ghost) => (
-            <div
-              key={ghost.label}
-              className="rounded-[18px] border border-dashed border-line p-7 text-fg2"
-            >
-              <p className="font-mono text-[11px] tracking-[0.1em] uppercase">{ghost.label}</p>
-              <p className="mt-3 text-[15px] leading-relaxed">{ghost.note}</p>
-            </div>
-          ))}
         </Reveal>
       </div>
     </section>

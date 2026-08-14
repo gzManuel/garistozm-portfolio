@@ -12,8 +12,9 @@ export function Skills() {
         {skills.intro}
       </Reveal>
 
-      {/* 1px gap over a line-coloured background is the mock's hairline grid. */}
-      <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-2">
+      {/* 1px gap over a line-coloured background is the mock's hairline grid; light mode
+          leaves the softer bg-on-bg2 seam. */}
+      <div className="grid gap-px overflow-hidden rounded-2xl border border-line lg:grid-cols-2 dark:bg-line">
         {skills.groups.map((group) => (
           <Reveal key={group.label} className="bg-bg2 px-[26px] pt-[26px] pb-7">
             <h3 className="mb-[18px] font-mono text-[11px] font-medium tracking-[0.12em] text-fg2 uppercase">
