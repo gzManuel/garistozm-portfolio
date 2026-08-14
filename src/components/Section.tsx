@@ -16,6 +16,8 @@ interface SectionProps {
   children: ReactNode;
   /** Uses the raised `bg2` background, as the mock does for Projects and Signals. */
   raised?: boolean;
+  /** Optional visual sitting above the heading in the label column, as About's portrait does. */
+  media?: ReactNode;
   className?: string;
 }
 
@@ -33,9 +35,23 @@ export function Section({
   heading,
   children,
   raised = false,
+  media,
   className = '',
 }: SectionProps) {
   const labelId = sectionLabelId(id ?? heading);
+
+  const label = (
+    <Reveal
+      as="h2"
+      id={labelId}
+      className={`font-mono text-xs font-medium tracking-[0.14em] text-fg2 uppercase ${
+        media ? 'mt-[26px]' : ''
+      }`}
+    >
+      <span aria-hidden="true">{index} — </span>
+      {heading}
+    </Reveal>
+  );
 
   return (
     <section
@@ -46,14 +62,14 @@ export function Section({
       } ${className}`}
     >
       <div className="mx-auto grid max-w-[1080px] gap-5 lg:grid-cols-[200px_1fr] lg:gap-14">
-        <Reveal
-          as="h2"
-          id={labelId}
-          className="font-mono text-xs font-medium tracking-[0.14em] text-fg2 uppercase"
-        >
-          <span aria-hidden="true">{index} — </span>
-          {heading}
-        </Reveal>
+        {media ? (
+          <div>
+            {media}
+            {label}
+          </div>
+        ) : (
+          label
+        )}
         <div>{children}</div>
       </div>
     </section>

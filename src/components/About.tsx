@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { about } from '@/content/about';
 import { Reveal } from './Reveal';
 import { Section } from './Section';
@@ -5,8 +6,21 @@ import { Section } from './Section';
 export function About() {
   const [lead, follow] = about.paragraphs;
 
+  /* Narrow and centred on mobile, filling the label column at `lg` — as the mock sizes it. */
+  const portrait = (
+    <Reveal className="relative mx-auto aspect-[4/5] w-[150px] overflow-hidden rounded-[15px] border border-line bg-bg3 lg:mx-0 lg:w-full">
+      <Image
+        src={about.portrait.src}
+        alt={about.portrait.alt}
+        fill
+        sizes="(min-width: 1024px) 200px, 150px"
+        className="object-cover"
+      />
+    </Reveal>
+  );
+
   return (
-    <Section id="about" index="01" heading="About">
+    <Section id="about" index="01" heading="About" media={portrait}>
       <Reveal as="p" className="text-base leading-[1.7] text-fg lg:text-[19px]">
         {lead}
       </Reveal>
