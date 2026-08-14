@@ -18,7 +18,7 @@ export const signals = {
     {
       quote:
         '…diving head-first into the Lambda project and taking full ownership of it. I’m continuously impressed with your ability to take some high-level requirements and turn them into a highly functional product.',
-      attribution: 'Ben March · Harvard Business Publishing',
+      attribution: 'Ben March · FE Architect, Harvard Business Publishing',
     },
     {
       quote:

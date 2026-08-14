@@ -1,6 +1,14 @@
 @import 'tailwindcss';
 
 /*
+ * `dark:` must follow the same `data-theme` attribute the pre-paint script and
+ * ThemeToggle drive — Tailwind's stock variant keys off prefers-color-scheme,
+ * which drifts out of sync with it. `:where()` keeps specificity at zero so these
+ * utilities stay overridable like every other variant.
+ */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/*
  * Palette lifted from the design mock's DARK / LIGHT maps.
  * Dark is the default; `data-theme` on <html> is set by the pre-paint inline
  * script in layout.tsx, so both branches must be attribute-driven rather than
