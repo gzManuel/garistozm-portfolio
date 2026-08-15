@@ -34,6 +34,21 @@ describe('ExternalLink', () => {
     expect(screen.getByRole('link')).not.toHaveAttribute('target');
   });
 
+  // The résumé PDF lives in /public, so its href is relative — but following it
+  // in place would still take the visitor off the page.
+  it('opens an opted-in relative href in a new tab, and says so', () => {
+    render(
+      <ExternalLink href="/cv.pdf" newTab>
+        CV
+      </ExternalLink>,
+    );
+    const link = screen.getByRole('link');
+
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    expect(link).toHaveAccessibleName('CV, opens in a new tab');
+  });
+
   it('keeps the arrow decorative', () => {
     render(
       <ExternalLink href="https://example.com" arrow>

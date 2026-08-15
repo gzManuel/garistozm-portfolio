@@ -53,7 +53,7 @@ export function Contact() {
             <LinkedInIcon />
             LinkedIn
           </ExternalLink>
-          <ExternalLink href={site.resume} arrow className={outboundPill}>
+          <ExternalLink href={site.resume} arrow newTab className={outboundPill}>
             <DocumentIcon />
             Résumé
           </ExternalLink>

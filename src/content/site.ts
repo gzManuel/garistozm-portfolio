@@ -45,8 +45,9 @@ export const site = {
   github: 'https://github.com/gzManuel',
   linkedin: 'https://www.linkedin.com/in/garistozunamanuel',
 
-  // TODO(manuel): drop the CV PDF in /public and link it here (e.g. '/manuel-garisto-cv.pdf').
-  resume: '#',
+  // Served straight out of /public. Root-relative on purpose, so previews and
+  // localhost link to their own copy rather than to production's.
+  resume: '/Manuel_Garisto_Senior_Frontend_Engineer.pdf',
 
   nav: [
     { label: 'About', href: '#about' },
