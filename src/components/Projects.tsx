@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { projects, type ProjectsContent } from '@/content/projects';
 import { ExternalLink } from './ExternalLink';
+import { GitHubIcon, GlobeIcon } from './Icons';
 import { Reveal } from './Reveal';
 import { sectionLabelId } from './Section';
 
@@ -65,8 +66,9 @@ export function Projects() {
                   <ExternalLink
                     href={featured.liveUrl}
                     arrow
-                    className="rounded-full bg-accent px-5 py-[11px] text-sm font-semibold whitespace-nowrap text-accent-ink hover:opacity-90"
+                    className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-[11px] text-sm font-semibold whitespace-nowrap text-accent-ink hover:opacity-90"
                   >
+                    <GlobeIcon />
                     Live site
                   </ExternalLink>
                 )}
@@ -75,10 +77,11 @@ export function Projects() {
                   arrow
                   className={
                     featured.liveUrl
-                      ? 'rounded-full border border-line px-5 py-[11px] text-sm whitespace-nowrap transition-colors hover:border-accent hover:text-accent'
-                      : 'rounded-full bg-accent px-5 py-[11px] text-sm font-semibold whitespace-nowrap text-accent-ink hover:opacity-90'
+                      ? 'inline-flex items-center gap-2 rounded-full border border-line px-5 py-[11px] text-sm whitespace-nowrap transition-colors hover:border-accent hover:text-accent'
+                      : 'inline-flex items-center gap-2 rounded-full bg-accent px-5 py-[11px] text-sm font-semibold whitespace-nowrap text-accent-ink hover:opacity-90'
                   }
                 >
+                  <GitHubIcon />
                   Repository
                 </ExternalLink>
               </div>

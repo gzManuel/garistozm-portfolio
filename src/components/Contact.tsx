@@ -1,12 +1,13 @@
 import { site } from '@/content/site';
 import { ExternalLink } from './ExternalLink';
+import { DocumentIcon, GitHubIcon, LinkedInIcon } from './Icons';
 import { Reveal } from './Reveal';
 import { sectionLabelId } from './Section';
 
 const isPlaceholderEmail = site.email.endsWith('@example.com');
 
 const outboundPill =
-  'rounded-full border border-line px-[22px] py-3 text-[15px] whitespace-nowrap transition-colors hover:border-accent hover:text-accent';
+  'inline-flex items-center gap-2 rounded-full border border-line px-[22px] py-3 text-[15px] whitespace-nowrap transition-colors hover:border-accent hover:text-accent';
 
 export function Contact() {
   return (
@@ -45,12 +46,15 @@ export function Contact() {
 
         <Reveal className="mt-[34px] flex flex-wrap gap-3">
           <ExternalLink href={site.github} arrow className={outboundPill}>
+            <GitHubIcon />
             GitHub
           </ExternalLink>
           <ExternalLink href={site.linkedin} arrow className={outboundPill}>
+            <LinkedInIcon />
             LinkedIn
           </ExternalLink>
           <ExternalLink href={site.resume} arrow className={outboundPill}>
+            <DocumentIcon />
             Résumé
           </ExternalLink>
         </Reveal>
