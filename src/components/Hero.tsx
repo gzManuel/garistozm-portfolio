@@ -1,10 +1,11 @@
 import { hero } from '@/content/hero';
 import { site } from '@/content/site';
 import { ExternalLink } from './ExternalLink';
+import { GitHubIcon, LinkedInIcon, MailIcon } from './Icons';
 import { Reveal } from './Reveal';
 
 const heroPill =
-  'rounded-full border border-line px-[22px] py-3.5 text-[15px] whitespace-nowrap transition-colors hover:border-accent hover:text-accent';
+  'inline-flex items-center gap-2 rounded-full border border-line px-[22px] py-3.5 text-[15px] whitespace-nowrap transition-colors hover:border-accent hover:text-accent';
 
 export function Hero() {
   return (
@@ -35,14 +36,17 @@ export function Hero() {
           <Reveal className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href={hero.primaryCta.href}
-              className="rounded-full bg-accent px-6 py-3.5 text-[15px] font-semibold whitespace-nowrap text-accent-ink hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-[15px] font-semibold whitespace-nowrap text-accent-ink hover:opacity-90"
             >
+              <MailIcon />
               {hero.primaryCta.label}
             </a>
             <ExternalLink href={site.github} className={heroPill}>
+              <GitHubIcon />
               GitHub
             </ExternalLink>
             <ExternalLink href={site.linkedin} className={heroPill}>
+              <LinkedInIcon />
               LinkedIn
             </ExternalLink>
           </Reveal>

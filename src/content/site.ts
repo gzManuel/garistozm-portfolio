@@ -33,9 +33,9 @@ export const site = {
   location: 'Buenos Aires, Argentina',
   timezone: 'GMT-3',
 
-  // TODO(manuel): swap for the production domain once the Vercel project has one.
-  // Used for the canonical link, OpenGraph URLs, sitemap and robots.
-  url: 'https://garistozm.vercel.app',
+  // Production domain, apex (no `www`). Used for the canonical link, OpenGraph
+  // URLs, sitemap and robots — keep it in sync with the primary domain on Vercel.
+  url: 'https://manuelgaristo.com',
 
   description:
     'Senior frontend engineer in Buenos Aires. Six years shipping production React and Next.js for U.S. teams — ADA-compliant e-commerce and ed-tech, legacy migrations, CI/CD, and components that hold up after handoff.',
@@ -45,8 +45,9 @@ export const site = {
   github: 'https://github.com/gzManuel',
   linkedin: 'https://www.linkedin.com/in/garistozunamanuel',
 
-  // TODO(manuel): drop the CV PDF in /public and link it here (e.g. '/manuel-garisto-cv.pdf').
-  resume: '#',
+  // Served straight out of /public. Root-relative on purpose, so previews and
+  // localhost link to their own copy rather than to production's.
+  resume: '/Manuel_Garisto_Senior_Frontend_Engineer.pdf',
 
   nav: [
     { label: 'About', href: '#about' },

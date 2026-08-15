@@ -15,13 +15,13 @@ export const timeline: TimelineContent = {
   entries: [
     {
       when: '2025 — now',
-      role: 'Senior Frontend Engineer',
+      role: 'Frontend Engineer',
       org: 'Harvard Business School (via Unosquare)',
       note: 'Sole frontend engineer on the OIDC login for the Shared Platform, owned end to end. 40+ React components as statically generated Next.js pages at 98/100 Lighthouse, 20+ content models migrated to Contentful behind a zero-downtime blue-green cutover, and AWS Lambdas that converted 120,000+ XML documents to HTML.',
     },
     {
       when: '2023 — 2024',
-      role: 'Senior Frontend Engineer',
+      role: 'Frontend Engineer',
       org: 'Brilliant Earth (via Unosquare)',
       note: 'Migrated PDP/PLP and 120+ components from Django + Jinja to a Next.js 14 Turborepo monorepo. A BFF layer cut API calls per page from 7 to 2 and LCP from 4.2s to 2.0s; Lighthouse went 62 → 92. Instituted PR reviews and coverage gates — velocity +20%, post-release bugs −30%.',
     },

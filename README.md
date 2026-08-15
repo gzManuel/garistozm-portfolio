@@ -98,5 +98,20 @@ state, so there is nothing to hydrate and no flash of the wrong palette.
 Import the repo on Vercel and accept the detected Next.js defaults; `output: 'export'`
 makes it a pure static deploy. Pushes to `main` deploy to production.
 
-Before the first deploy, set `site.url` in `src/content/site.ts` to the real domain —
-it feeds the canonical link, OpenGraph tags, `sitemap.xml` and `robots.txt`.
+The site lives at **https://manuelgaristo.com**. That domain is also `site.url` in
+`src/content/site.ts`, which feeds the canonical link, OpenGraph tags, `sitemap.xml`
+and `robots.txt` — if the domain ever changes, change it there.
+
+### Domain setup
+
+Vercel project → Settings → Domains: add both `manuelgaristo.com` and
+`www.manuelgaristo.com`, set the apex as primary, and let Vercel redirect `www` to it
+(308) so there is a single canonical host. At the registrar, point:
+
+| Record  | Name  | Value                   |
+| ------- | ----- | ----------------------- |
+| `A`     | `@`   | `76.76.21.21`           |
+| `CNAME` | `www` | `cname.vercel-dns.com.` |
+
+Vercel shows the exact values to use on the Domains page — prefer those over the
+table above if they differ; it provisions the TLS certificate once DNS resolves.
