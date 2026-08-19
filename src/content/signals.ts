@@ -17,11 +17,6 @@ export const signals = {
   testimonials: [
     {
       quote:
-        '…diving head-first into the Lambda project and taking full ownership of it. I’m continuously impressed with your ability to take some high-level requirements and turn them into a highly functional product.',
-      attribution: 'Ben March · FE Architect, Harvard Business Publishing',
-    },
-    {
-      quote:
         'Manuel is a delight to work with. Ever eager to help out and learn new skills, he goes above and beyond to try to come up with suggestions on what more he can do from the task assigned. He’s great with Next.js, TypeScript and unit testing, and picked up things like Cypress needed for our project in a short span.',
       attribution: 'Bhuvanasri Kalyana Sundaram · Senior Engineer, Aerospike',
     },
@@ -45,7 +40,7 @@ export const signals = {
     },
     {
       kind: 'AI-assisted delivery',
-      text: 'Picked by Harvard to pilot an internal AI development tool on a production course migration — shipped in under two months, held to their coding standards.',
+      text: 'Picked by Harvard to pilot an internal AI development tool on a course migration — shipped in under two months, held to their coding standards.',
     },
     {
       kind: 'Certification',

@@ -43,7 +43,7 @@ export const site = {
   email: 'garistozm@outlook.com',
 
   github: 'https://github.com/gzManuel',
-  linkedin: 'https://www.linkedin.com/in/garistozunamanuel',
+  linkedin: 'https://www.linkedin.com/in/gzmanuel/',
 
   // Served straight out of /public. Root-relative on purpose, so previews and
   // localhost link to their own copy rather than to production's.
