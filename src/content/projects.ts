@@ -26,8 +26,8 @@ export const projects = {
     name: 'pp-track',
     status: 'Source available',
     blurb:
-      'A portfolio tracking application. Track investments across multiple portfolios, log buy/sell/fee transactions, and monitor asset prices for stocks and CEDEARs — in pesos or either kind of dollar.',
-    stack: ['Next.js', 'TypeScript', 'Node.js', 'PostgreSQL', 'AWS Lambda'],
+      "Argentines who invest in pesos lose track of what they've actually made — devaluation turns a paper gain into a real loss, and a peso-denominated balance never shows it. pp-track values a portfolio on the Argentine market in ARS and in both parallel dollar rates, MEP and CCL, so the number you read is the real one. I use it to track my own holdings.",
+    stack: ['Next.js 16', 'React 19', 'TypeScript', 'Fastify', 'Prisma', 'PostgreSQL', 'Turborepo'],
 
     // No liveUrl yet — pp-track isn't deployed. Add one here and the button returns.
     repoUrl: 'https://github.com/gzManuel/pp-track',
