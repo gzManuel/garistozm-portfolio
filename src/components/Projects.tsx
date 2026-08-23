@@ -33,7 +33,7 @@ export function Projects() {
           as="article"
           className="overflow-hidden rounded-[18px] border border-line bg-bg transition-colors hover:border-accent"
         >
-          <div className="grid lg:grid-cols-[1.15fr_1fr]">
+          <div className="grid lg:grid-cols-[1fr_1.5fr]">
             <div className="p-[26px] lg:p-10">
               <div className="flex items-center gap-3">
                 <h3 className="text-2xl font-extrabold tracking-[-0.02em] lg:text-[30px]">
@@ -87,14 +87,19 @@ export function Projects() {
               </div>
             </div>
 
-            {/* Screenshot slot. The shot covers the whole cell; the hatch is the loading fill. */}
-            <div className="relative min-h-[220px] border-t border-line bg-[repeating-linear-gradient(135deg,var(--bg3)_0_9px,var(--bg2)_9px_18px)] lg:min-h-[320px] lg:border-t-0 lg:border-l">
+            {/* Screenshot slot. The capture keeps its own ratio (`h-auto`) so no frame is
+                cropped, centred in a cell the taller text column sizes; the hatch fills
+                what is left and shows through while the file loads. `unoptimized` keeps
+                the GIF animating — the optimizer would flatten it to one frame. */}
+            <div className="flex items-center border-t border-line bg-[repeating-linear-gradient(135deg,var(--bg3)_0_9px,var(--bg2)_9px_18px)] lg:min-h-[320px] lg:border-t-0 lg:border-l">
               <Image
                 src={featured.shot.src}
                 alt={featured.shot.alt}
-                fill
-                sizes="(min-width: 1024px) 520px, 100vw"
-                className="object-cover object-left-top"
+                width={featured.shot.width}
+                height={featured.shot.height}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                unoptimized
+                className="h-auto w-full"
               />
             </div>
           </div>

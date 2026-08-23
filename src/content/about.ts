@@ -1,4 +1,8 @@
-import type { Screenshot } from './projects';
+/** Rendered as a fixed 4/5 crop, so a path is enough — no intrinsic size needed. */
+export interface Portrait {
+  readonly src: string;
+  readonly alt: string;
+}
 
 export interface AboutChip {
   readonly label: string;
@@ -10,7 +14,7 @@ export interface AboutContent {
   readonly paragraphs: readonly [string, string];
   readonly chips: readonly AboutChip[];
   /** Sits in the section's label column, above the heading, as the mock has it. */
-  readonly portrait: Screenshot;
+  readonly portrait: Portrait;
 }
 
 export const about = {
